@@ -1,13 +1,39 @@
-import React from 'react';
-import './index.css';
+import React,{Component} from 'react';
+import TodoItems from './Components/TodoItems/TodoItems';
+import AddItems from './Components/AddItems/AddItems';
 
-function App() {
-  return (
-      <>
-      <header className='title'>Todo App</header>
-      <div className="WhiteRect"></div>
-      </>
-  );
+class App extends Component {
+
+  state={
+    items:[{id:1,name:'Hamza',age:22},
+    {id:2,name:"Amir",age:22},
+    {id:3,name:"Mirooo",age:23}]
+  }
+
+
+  deleteItem = (id) =>{
+    let items = this.state.items;
+    let i = items.findIndex(item => item.id === id)
+    items.splice(i,1)
+    this.setState({items});
+  }
+
+  addItem = (item) =>{
+      item.id = Math.random();
+      let items = this.state.items;
+      items.push(item);
+      this.setState({items})
+  }
+
+  render(){
+    return(
+      <div>
+        <header className='title'>Todo List</header>
+        <TodoItems items={this.state.items}  deleteItem={this.deleteItem}/>
+        <AddItems addItem={this.addItem}/>
+      </div>
+    );
+  }
 }
 
 export default App;
