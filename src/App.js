@@ -5,9 +5,9 @@ import AddItems from './Components/AddItems/AddItems';
 class App extends Component {
 
   state={
-    items:[{id:1,name:'Hamza',age:22},
-    {id:2,name:"Amir",age:22},
-    {id:3,name:"Mirooo",age:23}]
+    items:[{id:1,name:'Hamza',hours:22},
+    {id:2,name:"Amir",hours:22},
+    {id:3,name:"Mirooo",hours:23}]
   }
 
 
@@ -27,7 +27,7 @@ class App extends Component {
 
   render(){
     return(
-      <div>
+      <div className='App'>
         <header className='title'>Todo List</header>
         <TodoItems items={this.state.items}  deleteItem={this.deleteItem}/>
         <AddItems addItem={this.addItem}/>

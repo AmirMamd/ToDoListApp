@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import "./AddItems.css"
 
 class AddItems extends Component{
 
@@ -10,17 +11,7 @@ class AddItems extends Component{
 
     state ={
         name: '',
-        age: ''
-    }
-
-
-    handleSubmit = (e) =>{
-        e.preventDefault();
-        this.props.addItems(this.state)
-        this.setState({
-            name:'',
-            age: ''
-        })
+        hours: ''
     }
 
     handleChange = (e) =>{
@@ -30,12 +21,27 @@ class AddItems extends Component{
         console.log(e.target.value);
     }
 
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        if(e.target.name.value === ''){
+            return false
+        }else{
+            this.props.addItem(this.state)
+            this.setState({
+            name:'',
+            hours: ''
+        })
+        }
+    }
+
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-            <input type="text" className="AddName" id="name" placeholder="Enter Item" onChange={this.handleChange}></input>
-            <input type="number" className="AddAge" id="age" placeholder="Enter Age" onChange={this.handleChange}></input>
-            <input type="submit" value="Add" />
+                <td className="table">
+                <input type="text" className="AddName" id="name" placeholder="Enter Item" onChange={this.handleChange}></input>
+                <input type="number" className="AddHours" id="hours" placeholder="Enter hours" onChange={this.handleChange}></input>
+                <input type="submit" value="Add" />
+                </td>
             </form>
         );
     }

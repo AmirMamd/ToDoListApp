@@ -1,14 +1,11 @@
+*{
+  box-sizing: border-box;
+}
+
 body{
   background-color: cornflowerblue;
-}
 
-.WhiteRect{
-  color: white;
-  z-index: 1;
-  width: 50%;
-  height: 50%;
 }
-
 .title{
   color: white;
   text-align: center;
